@@ -112,5 +112,36 @@
         <p>Sampoerna Dianto</p>
         <a href="https://github.com/PixelSam123">https://github.com/PixelSam123</a>
     </div>
+
+    <script>
+        const up = document.getElementById('up')
+        const down = document.getElementById('down')
+        const left = document.getElementById('left')
+        const right = document.getElementById('right')
+
+        const b = document.getElementById('b')
+        const a = document.getElementById('a')
+
+        const screen = document.getElementById('screen-text')
+
+        up.addEventListener('click', () => {
+            screen.innerText = 'Up'
+        })
+        down.addEventListener('click', () => {
+            screen.innerText = 'Down'
+        })
+        left.addEventListener('click', () => {
+            screen.innerText = 'Left'
+        })
+        right.addEventListener('click', () => {
+            screen.innerText = 'Right'
+        })
+        b.addEventListener('click', () => {
+            screen.innerText = 'B'
+        })
+        a.addEventListener('click', () => {
+            screen.innerText = 'A'
+        })
+    </script>
 </body>
 </html>
