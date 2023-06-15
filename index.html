@@ -89,6 +89,7 @@
             border-radius: 4px;
             display: grid;
             place-items: center;
+            z-index: 50;
         }
 
         .circle {
@@ -135,18 +136,15 @@
         .credits a {
             color: aquamarine;
         }
+
+        button:active {
+            transform: translateY(2px);
+            transition: transform 0.1s;
+            transition-timing-function: ease-out;
+        }
     </style>
 </head>
 <body>
-    <!-- kamu bisa menambahkan canvas dan variasi lainnya @POINPLUS, misal seperti berikut -->
-    <!-- n=======================n -->
-    <!-- |    [^]                | -->
-    <!-- | [<]   [>]      [B][A] | -->
-    <!-- |    [v]                | -->
-    <!-- n=======================n -->
-    <!-- kamu juga bisa menambahkan animasi @POINPLUS -->
-    <!-- kamu boleh menambahkan sprite di samping textscreen yang sudah ada @POINPLUS -->
-
     <div>
         <div class="screen bg-white">
             <h1 id="screen-text">CLICK A BUTTON</h1>
