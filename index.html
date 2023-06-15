@@ -2,22 +2,84 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JoyCon</title>
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: aquamarine;
+            font-family: sans-serif;
+            min-height: 100vh;
+            padding: 1rem;
+            display: grid;
+            place-items: center;
+        }
+
+        .bg-white {
+            background-color: white;
+        }
+
+        .screen {
+            text-align: center;
+            padding: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .gamepad {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .movement-keys {
+            display: grid;
+            grid-template-areas:
+                "empty1 up empty2"
+                "left empty3 right"
+                "empty4 down empty5";
+            grid-template-rows: 48px 48px 48px;
+            grid-template-columns: 48px 48px 48px;
+        }
+
+        #up {
+            grid-area: up;
+        }
+
+        #left {
+            grid-area: left;
+        }
+
+        #right {
+            grid-area: right;
+        }
+
+        #down {
+            grid-area: down;
+        }
+
+        .action-keys {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .action-keys button {
+            width: 48px;
+            height: 48px;
+        }
+
+        .credits {
+            position: fixed;
+            right: 16px;
+            bottom: 16px;
+            text-align: right;
+        }
+    </style>
 </head>
 <body>
-    <!-- buat komponen yang menggambarkan controller @MUTAMA -->
-    <!--    [^]                -->
-    <!-- [<][v][>]      [B][A] -->
-    <!--           atau        -->
-    <!--    [^]                -->
-    <!-- [<]   [>]      [B][A] -->
-    <!--    [v]                -->
-    <!-- controller dibagi menjadi 2 bagian, kiri untuk arah, kanan untuk aksi -->
-    <!-- banyak cara yang bisa kamu terapkan, sesuaikan saja dengan apa yang menurut kamu paling nyaman -->
-    <!-- di kolom kiri yang memuat arah bisa dibuat dengan menggunakan skema display flex atau pun memanfaatkan posisi absolute yang memuat button-button -->
-    <!-- di kolom kanan yang memuat aksi bisa dibuat dengan menggunakan skema display flex atau menggunakan block -->
     <!-- kamu bisa menambahkan canvas dan variasi lainnya @POINPLUS, misal seperti berikut -->
     <!-- n=======================n -->
     <!-- |    [^]                | -->
@@ -25,23 +87,30 @@
     <!-- |    [v]                | -->
     <!-- n=======================n -->
     <!-- kamu juga bisa menambahkan animasi @POINPLUS -->
-    <!-- kemudian tambahkan satu text screen di atas controller tersebut @UTAMA -->
-    <!-- wilayah text tersebut akan menampilkan apa yang kamu tekan pada controller @UTAMA -->
-    <!-- misalnya kamu menekan tombol atas, maka text tersebut akan menampilkan "atas" -->
-    <!-- kamu bisa menggunakan javascript untuk menangkap event dari controller tersebut -->
-    <!-- kamu bisa menggunakan event click, keydown, keyup, atau pun event lainnya -->
-    <!-- kamu juga bisa menggunakan event listener atau pun event handler -->
-    <!-- kamu juga bisa menggunakan event keydown untuk menangkap event keyboard -->
-    <!--     o--------------o      -->
-    <!--     | TAMPIL SINI  |      -->
-    <!--     o--------------o      -->
-    <!-- n=======================n -->
-    <!-- |    [^]                | -->
-    <!-- | [<]   [>]      [B][A] | -->
-    <!-- |    [v]                | -->
-    <!-- n=======================n -->
-    <!--  -->
     <!-- kamu boleh menambahkan sprite di samping textscreen yang sudah ada @POINPLUS -->
-    <!-- di ujung kanan bawah, tambahkan informasi NIM, nama, dan link Github @UTAMA -->
+
+    <div>
+        <div class="screen bg-white">
+            <h1 id="screen-text">Click a button!</h1>
+        </div>
+        <div class="gamepad bg-white">
+            <div class="movement-keys">
+                <button id="up">Up</button>
+                <button id="down">Down</button>
+                <button id="left">Left</button>
+                <button id="right">Right</button>
+            </div>
+            <div class="action-keys">
+                <button id="b">B</button>
+                <button id="a">A</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="credits">
+        <p>21430121</p>
+        <p>Sampoerna Dianto</p>
+        <a href="https://github.com/PixelSam123">https://github.com/PixelSam123</a>
+    </div>
 </body>
 </html>
