@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JoyCon</title>
+    <title>JoyCon (Sampoerna Dianto)</title>
     <style>
         *, *::before, *::after {
             margin: 0;
@@ -11,7 +11,9 @@
         }
 
         body {
-            background-color: aquamarine;
+            background: linear-gradient(90deg, #293548 10px, transparent 1%) center,
+                linear-gradient(#293548 10px, transparent 1%) center, #3d4b5f;
+            background-size: 12px 12px;
             font-family: sans-serif;
             min-height: 100vh;
             padding: 1rem;
@@ -24,21 +26,35 @@
         }
 
         .screen {
+            font-family: monospace;
             text-align: center;
             padding: 2rem;
             margin-bottom: 1rem;
+            background-color: black;
+            color: #20C20E;
+            border: solid #efefef;
+            border-width: 12px 12px;
+            border-radius: 12px;
+            box-shadow: 8px 8px rgba(0, 0, 0, 50%);
         }
 
         .gamepad {
             display: flex;
             justify-content: space-between;
+            column-gap: 24px;
+            border: solid #efefef;
+            border-width: 24px 12px;
+            border-radius: 12px;
+            box-shadow: 8px 8px rgba(0, 0, 0, 50%);
+            background-color: #3e465a;
+            padding: 1rem;
         }
 
         .movement-keys {
             display: grid;
             grid-template-areas:
                 "empty1 up empty2"
-                "left empty3 right"
+                "left middle right"
                 "empty4 down empty5";
             grid-template-rows: 48px 48px 48px;
             grid-template-columns: 48px 48px 48px;
@@ -60,15 +76,52 @@
             grid-area: down;
         }
 
+        #up, #left, #right, #down {
+            outline: 4px solid #efefef;
+            border-radius: 4px;
+            color: #b3bedb;
+            font-size: 1.5rem;
+        }
+
+        .middle {
+            grid-area: middle;
+            outline: 4px solid #262c3e;
+            border-radius: 4px;
+            display: grid;
+            place-items: center;
+        }
+
+        .circle {
+            width: 1rem;
+            height: 1rem;
+            outline: 2px solid #505b79;
+            border-radius: 9999px;
+        }
+
+        #up, #left, #right, #down, .middle {
+            background-color: #262c3e;
+        }
+
         .action-keys {
             display: flex;
             align-items: center;
             justify-content: center;
+            column-gap: 8px;
+        }
+
+        .action-keys div {
+            background-color: #efefef;
+            border-radius: 8px;
+            padding: 8px;
         }
 
         .action-keys button {
-            width: 48px;
-            height: 48px;
+            width: 40px;
+            height: 40px;
+            border-radius: 9999px;
+            background-color: #f8362a;
+            color: white;
+            font-weight: 600;
         }
 
         .credits {
@@ -76,6 +129,11 @@
             right: 16px;
             bottom: 16px;
             text-align: right;
+            color: white;
+        }
+
+        .credits a {
+            color: aquamarine;
         }
     </style>
 </head>
@@ -91,18 +149,26 @@
 
     <div>
         <div class="screen bg-white">
-            <h1 id="screen-text">Click a button!</h1>
+            <h1 id="screen-text">CLICK A BUTTON</h1>
         </div>
         <div class="gamepad bg-white">
             <div class="movement-keys">
-                <button id="up">Up</button>
-                <button id="down">Down</button>
-                <button id="left">Left</button>
-                <button id="right">Right</button>
+                <button id="up">↑</button>
+                <button id="down">↓</button>
+                <button id="left">←</button>
+                <button id="right">→</button>
+
+                <div class="middle">
+                    <div class="circle"></div>
+                </div>
             </div>
             <div class="action-keys">
-                <button id="b">B</button>
-                <button id="a">A</button>
+                <div>
+                    <button id="b">B</button>
+                </div>
+                <div>
+                    <button id="a">A</button>
+                </div>
             </div>
         </div>
     </div>
@@ -125,22 +191,39 @@
         const screen = document.getElementById('screen-text')
 
         up.addEventListener('click', () => {
-            screen.innerText = 'Up'
+            screen.innerText = 'UP'
         })
         down.addEventListener('click', () => {
-            screen.innerText = 'Down'
+            screen.innerText = 'DOWN'
         })
         left.addEventListener('click', () => {
-            screen.innerText = 'Left'
+            screen.innerText = 'LEFT'
         })
         right.addEventListener('click', () => {
-            screen.innerText = 'Right'
+            screen.innerText = 'RIGHT'
         })
         b.addEventListener('click', () => {
             screen.innerText = 'B'
         })
         a.addEventListener('click', () => {
             screen.innerText = 'A'
+        })
+
+        document.addEventListener('keydown', (evt) => {
+            console.log(evt.code)
+            if (evt.code === 'ArrowUp' || evt.code === 'KeyW') {
+                up.click()
+            } else if (evt.code === 'ArrowDown' || evt.code === 'KeyS') {
+                down.click()
+            } else if (evt.code === 'ArrowLeft' || evt.code === 'KeyA') {
+                left.click()
+            } else if (evt.code === 'ArrowRight' || evt.code === 'KeyD') {
+                right.click()
+            } else if (evt.code === 'KeyB') {
+                a.click()
+            } else if (evt.code === 'KeyV') {
+                b.click()
+            }
         })
     </script>
 </body>
